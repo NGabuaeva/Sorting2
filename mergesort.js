@@ -27,17 +27,23 @@ function merge(arr1, arr2) {
   if (right < arr2.length) {
     arr3 = [...arr3, ...(arr2.slice(right))]
   }
-  // let extraNum
-  // arr2.length > arr1.length ? extraNum = arr2[arr2.length - 1] : extraNum = null
-  // if (extraNum) {
-  //   if (extraNum > arr3[arr3.length - 1]) {
-  //     arr3.push(extraNum)
-  //   } else {
-  //     let temp = arr3[arr3.length - 1]
-  //     arr3[arr3.length - 1] = extraNum
-  //     arr3.push(temp)
-  //   }
-  // }
 
   return arr3
+}
+
+
+function mergeSort(array) {
+  if (array.length < 2) {
+    return array
+  }
+  const splitArr = split(array)
+  let arr1 = splitArr[0]
+  arr1 = mergeSort(arr1)
+
+  let arr2 = splitArr[1]
+  arr2 = mergeSort(arr2)
+
+  console.log('arr1:', arr1)
+  console.log('arr2', arr2)
+  return merge(arr1, arr2)
 }
